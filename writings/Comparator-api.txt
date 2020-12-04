@@ -1,0 +1,39 @@
+Comparator<T>  -- part of package java.util
+  int compare(T t1, T t2)
+
+Other methods in Comparator:
+
+static:
+<T, U> Comparator<T> comparing(Function keyExtractor)
+  the sort key that is extracted must be a Comparable
+  
+<T, U> Comparator<T> comparing(Function keyExtractor, Comparator keyComparator)
+  the sort key that is extracted doesn't have to be a Comparable, because
+  the keyComparator does the comparing of the sort keys
+  
+<T> Comparator<T> comparingDouble(ToDoubleFunction keyExtractor)
+  the key extractor extracts a double
+  the comparison of doubles is just based on {a - b}
+  
+similarly:
+  comparingInt
+  comparingLong
+  
+<T extends Comparable<? super T>> Comparator<T> naturalOrder()
+
+<T extends Comparable<? super T>> Comparator<T> reverseOrder()
+
+<T> Comparator<T> nullsFirst(Comparator)
+<T> Comparator<T> nullsLast(Comparator)
+
+
+instance default:
+
+Comparator<T> reversed()
+Comparator<T> thenComparing(anotherComparator)
+Comparator thenComparing(aKeyExtractorFunction)
+Comparator thenComparing(aKeyExtractorFunction, aKeyComparator)
+Comparator thenComparingDouble(ToDoubleFunction keyExtractor)
+Comparator thenComparingInt(ToIntFunction keyExtractor)
+Comparator thenComparingLong(ToLongFunction keyExtractor)
+

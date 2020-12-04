@@ -1,0 +1,22 @@
+Language Basics
+
+Arrays
+int[] = new int[10];
+
+the size of the array is not part of its type, so the "left side" of the assignment does not get a number inside the brackets
+
+shortcut syntax
+type[] varName = {<element 0>, <element 1>, <element 2>,...};
+
+Array elements are provided with default values -- the following prints 5 0's:
+        int[] defaults = new int[5];
+        for (int i: defaults) {
+        	System.out.println(i);
+        }
+
+Potential Arrays utility class methods to know:
+binarySearch
+equals
+fill (such as fill(int[] a, int val) 
+sort
+parallelSort

@@ -1,0 +1,22 @@
+Permissions, AccessController, AccessControlContext
+
+Permission objects are organized into PermissionCollection groupings.
+The java.security.Permissions class represents a collection of PermissionCollections.
+
+// an example of no permissions
+private static final java.security.PermissionCollection
+    noPermissions = new java.security.Permissions();
+	
+each class has a ProtectionDomain
+
+uses intersection of permissions of each stack frame
+
+AccessController.doPrivileged cuts off the stack check
+
+Be careful when using caller-provided data/objects
+
+Do not leak sensitive data objects
+
+null AccessControlContext = full permissions
+
+there's a way to add a parameter for the exact permission that is needed for the doPrivileged

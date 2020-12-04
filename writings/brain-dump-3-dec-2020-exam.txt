@@ -1,0 +1,62 @@
+Brain Dump Oracle 1Z0-819, 3-Dec-2020
+
+Paths.get? Yes
+Files.copy() or move() (can't remember, but one of them was on the test)
+default methods conflict
+access modifiers and accessbility -- several questions
+comparator with reversed()
+repeatable annotation
+value() (annotation)
+modularization and classpath vs. module path / automatic modules
+autoboxing and unboxing, as well as widening
+System.out.println(aChar + aChar)
+try-with-resources
+assertions? no
+BiPredicate
+bitwise operators? no
+BlockingQueue? no
+labels? no
+calculations with post-increment operators
+nested loops
+identifying functional interfaces
+jdeps -summary on a class
+Locale with ResourceBundle, properties file, format, and []
+BufferedReader, System.in, InputStreamReader
+ExecutorService, FixedThreadPool, CyclicBarrier
+DateTimeFormatter? no
+CallableStatement?  I thought so, with a definition of a stored proc, even
+Enumerations - some funky thing with a factory method on an enum
+Custom exception extending Exception, adding an error code and overriding getMessage()
+Method references
+List.copyOf() and its unmodifiability
+findAny() with a parallel stream
+Collectors.groupingBy()
+doPrivileged with Socket connect action, asking what security problems are introduced
+interning of Strings and ==
+Generics and covariant return types
+module-source-path? no
+jlink, jmod? no
+JDBC URLs? no
+variable hiding? yes
+overloading and overriding
+Optional and orElseThrow, I think
+charAt
+flatMap
+service provider module definition
+service loader and iterator
+symbolic link and Files? no
+normalize, relativize, resolve? no
+encapsulation? not directly
+A "When is object X eligible for garbage collection" question? no
+Stream.concat(Stream, Stream) was on the test
+valid lambda question? yes
+LinkedHashMap was mentioned on the test
+Random? no, not that I remember
+maxBy()
+PreparedStatement
+IntStream
+deadlock detection? not that I noticed :)
+synchronized keyword
+AtomicInteger
+ternary operator nested within another ternary operator
+

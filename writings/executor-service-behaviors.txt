@@ -1,0 +1,64 @@
+ExecutorService methods
+
+static Executors methods for getting an ExecutorService:
+1. newSingleThreadExecutor
+2. ScheduledExecutorService newScheduledThreadPool(int corePoolSize)
+3. ScheduledExecutorService newSingleThreadScheduleExecutor()
+4. newCachedThreadPool
+5. newFixedThreadPool
+
+What are the essential functions of an ExecutorService?
+1. kick off tasks
+2. manage the running tasks (by interrupting/shutting them down)
+3. report the status of the executor and the tasks
+
+What are the ways to get tasks kicked off?
+<T> List<Future<T>> invokeAll(aCollectionOfCallables)
+<T> List<Future<T>> invokeAll(aCollectionOfCallables, long timeout, TimeUnit unit)
+<T> T invokeAny(aCollectionOfCallables)
+<T> T invokeAny(aCollectionOfCallables, aTimeoutLong, aTimeUnit)
+<T> Future<T> submit(Runnable task, T result)
+Future<?> submit(Runnable task)
+void execute(Runnable command)
+
+How does the ExecutorService manage the tasks in the case of invokeAll?
+waits for Future.isDone() for all the tasks, if possible
+cancels those tasks that are incompleted when time runs out
+
+Behavior for invokeAny:
+Once one of the tasks has completed successfully (without throwing an exception), the ExecutorService cancels the incomplete ones.
+
+Behavior for submit(Runnable):
+returns a Future whose get() will return null, unless the desired result was passed in to submit() as a second paramter
+
+Behavior for submit(Callable):
+returns a Future that holds the pending results of the Callable
+
+Behavior for execute(Runnable):
+-executes the Runnable 
+- no Future associated
+
+How does shutdown() behave?
+void shutdown()
+  -- previously submitted tasks keep going
+  -- no new tasks accepted
+  -- can throw SecurityException, which is unchecked
+  
+How does shutdownNow() behave?
+List<Runnable> shutdownNow()
+-- tries to shut everything down, including actively executing tasks
+-- halts the processing of waiting tasks and returns a list of the tasks that were awaiting execution
+-- does not have much latency
+
+Query methods on an ExecutorService:
+boolean isShutdown()
+boolean isTerminated()
+
+Methods on the Future interface:
+boolean cancel(boolean mayInterruptIfRunning)
+V get()  throws InterruptedException, ExecutionException // might return null, especially in case of a Runnable
+V get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException
+boolean isCancelled()
+boolean isDone()
+
+

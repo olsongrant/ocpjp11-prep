@@ -1,0 +1,12 @@
+Iterator API
+
+default void forEachRemaining(aConsumer)
+boolean hasNext()
+E next()
+default void remove()
+
+Enumerator API
+default Iterator<E> asIterator()
+boolean hasMoreElements()
+E nextElement()
+

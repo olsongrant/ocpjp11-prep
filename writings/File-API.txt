@@ -1,0 +1,41 @@
+java.io.File
+
+Constructors:
+public File(String pathName)
+public File(File parent, String child)
+public File(String parent, String child)
+public File(URI uri)
+
+File objects are not connected to an actual file system unless/until operated upon.
+
+
+File methods:
+boolean canExecute()
+boolean canRead()
+boolean canWrite()
+int compareTo(File pathname)
+boolean createNewFile()  -- only creates if the path isn't already taken
+static File createTempFile(aPrefix, aSuffix) throws IOException
+static File createTempFile(aPrefix, aSuffix, aDirectoryFile) throws IOException
+boolean delete()
+void deleteOnExit()
+String[] list()
+String[] list(FilenameFilter filter)
+File[] listFiles()
+File[] listFiles(FilenameFilter)
+File[] listFiles(FileFilter filter)
+boolean mkdir()
+boolean mkdirs()
+boolean renameTo(File dest)
+boolean setLastModified(long time)
+boolean setReadOnly()
+boolean setWritable(boolean writable, boolean ownerOnly)
+boolean setWritable(boolean writable)
+	    setReadable
+		setExecutable
+boolean canExecute()
+static File[] listRoots()
+long getTotalSpace()
+	 getFreeSpace()
+	 getUsableSpace()
+Path toPath()	 

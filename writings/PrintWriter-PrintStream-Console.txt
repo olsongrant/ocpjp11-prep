@@ -1,0 +1,42 @@
+PrintWriter, PrintStream, Console
+
+PrintWriter construction:
+ definitely many constructors
+ constructor arg types include 
+   File, OutputStream, Writer, Charset, and String
+    the String items can be fileNames or charsetNames
+
+PrintWriter methods:
+void flush()
+void close()
+boolean checkError()
+protected void setError()	
+protected void clearError()
+void write(<a variety of things>)
+void print(<a variety of things>)
+void println(<a variety of things>)
+PrintWriter printf(String format, Object... args)
+PrintWriter printf(Locale l, String format, Object... args)
+PrintWriter format(String format, Object... args)
+PrintWriter format(Locale l, String format, Object... args)
+Printwriter append(CharSequence)
+PrintWriter append(CharSequence, startInt, endInt)
+PrintWriter append(char)
+
+Format strings (used by PrintWriter): 
+ these are the ones with %d, %f, %s, etc.
+ 
+PrintStream 
+is very, very similar to PrintWriter
+apparently, the difference is that PrintStream writes bytes, whereas the PrintWriter writes characters
+
+System.console() returns a Console
+
+a Console is not a PrintWriter or a PrintStream
+Console does have a writer() method that returns a PrintWriter, however
+And it has a reader() method that returns a Reader object
+closing the writer doesn't close the underlying stream
+closing the reader doesn't close the underlying stream
+
+
+

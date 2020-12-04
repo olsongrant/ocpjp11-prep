@@ -1,0 +1,17 @@
+
+My compilation checklist:
+1) Are all checked exceptions handled or declared? E
+2) Is there a typing/casting problem?    T
+3) Is there an access/visibility problem?  A
+4) Is there any unreachable code?     U
+5) Are the senders and receivers compatible?   R
+6) Are there failures to initialize?    I
+7) Are there problems with methods not returning an expected value?      R
+8) Are you reading the parentheses correctly??  P
+9) Are variables being hidden?  H
+10) Does the object involved formally implement the interface necessary (Comparable, AutoCloseable, Serializable, etc.)?
+11) Is the variable in scope?
+
+P H R I R U A T E
+
+ 

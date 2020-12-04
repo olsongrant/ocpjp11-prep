@@ -1,0 +1,41 @@
+Collection
+
+Which ones take null?
+The collections refusing a null are the ones doing sorting
+ArrayList allows null
+Vector allows null
+LinkedList allows null
+HashSet allows null
+TreeSet refuses null
+HashMap allows the null key
+Hashtable refuses the null key
+ArrayDeque refuses null
+LinkedBlockingQueue refuses null
+ConcurrentHashMap does not allow null as a key or value
+ConcurrentSkipListMap refuses null keys or values
+ArrayBlockingQueue refuses null elements
+ConcurrentLinkedDeque refuses null
+
+
+The common Collection methods:
+
+boolean add(E e)
+boolean addAll(aCollection)
+void clear()
+boolean contains(Object)
+boolean containsAll(aCollection)
+boolean equals(Object)
+int hashCode()
+boolean isEmpty()
+Iterator<E> iterator()
+Stream<E> parallelStream()
+boolean remove(Object)
+boolean removeAll(aCollection)
+boolean removeIf(aPredicate)
+boolean retainAll(aCollection)
+int size()
+Spliterator<E> spliterator()
+Stream<E> stream()
+Object[] toArray()
+T[] toArray(IntFunction<T[]> arrayGenerator)
+T[] toArray(T[] example)

@@ -1,0 +1,4 @@
+@SuppressWarnings
+
+"override" is not a valid argument for @SuppressWarnings. As per JLS 11 section 9.6.4.5, @SuppressWarnings must support three values: unchecked, deprecation, and removal. However, it is not an error if you use a value that is not supported by the compiler. A compiler simply ignores it.  Different compilers may support more values. For example, Oracle's javac compiler supports a large number of values (https://docs.oracle.com/en/java/javase/11/tools/javac.html ) . The ones that you should be aware of for the exam are: none, rawtypes, serial, and varargs.  This annotation is not repeatable. Therefore, you cannot use it twice on the same type. However, you can specify multiple values like this: @SuppressWarnings({"deprecation", "unchecked"})
+

@@ -1,0 +1,17 @@
+Enums
+
+enums implicity extend java.lang.Enum
+enums can't extend anything else
+The constants must be defined first.
+enums have a static values() method returning an array of all of the values of the enum in the order they are declared
+<enum type> aConstant = <enum type>.valueOf(String nameAsString);
+<enum object>.name() provides the human readable as a string
+<enum object>.ordinal() provides the int value corresponding to the enum value
+by default, toString() provides the name of the enum (but this behavior can be overridden)
+enums can be compared using == as well as equals()
+enums are case-sensitive
+switch statements with enums expect only the name of the enum in case statements. The enum type is implicit, and if it's included in the case statement, a la 
+  case Season.FALL:
+it won't compile.
+All enum constructors are implicitly private.
+If an enum has an abstract method, then each of the values must have an implementation of that method.
