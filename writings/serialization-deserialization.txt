@@ -1,0 +1,10 @@
+Serialization and Deserialization
+
+class List implements Serializable {
+    List next;
+
+    private static final ObjectStreamField[] serialPersistentFields
+                 = {new ObjectStreamField("next", List.class)};
+
+}
+

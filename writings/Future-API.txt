@@ -1,0 +1,38 @@
+java.util.concurrent.Future
+
+How to get an instance of Future
+Future<String> myFuture = anExecutorService.submit(aCallable);
+or
+FutureTask<String> future = new FutureTask<>(myCallable);
+anExecutor.execute(future);
+
+
+
+How to retrieve its payload
+the get() methods
+
+
+
+How to determine when the task is done
+Future::get waits for the computation to complete (blocks)
+Two versions:
+V get() throws InterruptedException, ExecutionException
+V get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException
+
+Future::isDone
+boolean isDone()
+  throws no exceptions
+boolean isCancelled()
+  throws no exceptions
+
+Other management functions:
+boolean cancel(boolean mayInterruptIfRunning) 
+  throws no exceptions
+  returns false if it could not be cancelled
+          true otherwise
+		  
+How to remember the exceptions thrown from Future::get:
+The task could be interrupted --> InterruptedException
+the task could have experienced an error in its own execution --> ExecutionException
+the task could be still processing when the waiting period has expired --> TimeoutException
+the task could have been cancelled already --> CancellationException (non-checked, and a subtype of IllegalStateException

@@ -1,0 +1,46 @@
+Nested Classes
+
+two categories of nested classes:
+  static --> "static nested classes"
+  non-static --> "inner classes"
+  
+Outer classes can only be declared public or package-private
+
+Static Nested Classes don't have any access to instance variables or methods aside from through object references.
+
+An inner (non-static) class cannot define any static members itself, unless they are constants (final).
+Inner class instances have direct access to the fields and methods of their enclosing outer class instances.
+
+If the inner class shadows an instance variable x in its enclosing class,
+then,
+from the inner class method standpoint,
+this.x refers to the inner class' x, and
+OuterClassName.this.x is the way to refer to the instance variable in the outer class (OuterClassName).
+
+From an outer class method, one can say
+  InnerClass myInnerClassInstance = this.new InnerClass();
+
+inner classes can be marked private, public, protected, or <default>
+
+local classes can be defined in any block (for loops and if-clauses included)
+
+local classes have access/visibility to method-local variables if they are final or effectively final (including method parameters)
+
+Local classes cannot define or declare any static members, unless they are final variables (constant expression).
+local classes cannot be static
+local interfaces (interfaces defined in a block) are not a thing
+
+local class modifiers can only be final or abstract (not public, private, or protected)
+
+Anonymous classes cannot have static initializers
+Anonymous classes cannot have member interfaces
+Anonymous classes can have constant variables, but those are the only static members that they can have.
+
+You can declare the following in anonymous classes:
+fields
+extra methods (beyond those of the supertype)
+instance initializers
+local classes
+
+You can't declare constructors in an anonymous class.
+

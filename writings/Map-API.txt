@@ -1,0 +1,41 @@
+Map API
+
+java.util.Map interface:
+
+static creation:
+of(K, V, K, V, .. K, V) -- up to 10 pairs of K, V
+ofEntries(Map.Entry...)
+of() -- unmodifiable, zero mappings (not sure why anyone would do this in real production code)
+
+TreeMap:
+
+Constructors:
+TreeMap()
+TreeMap(Comparator)
+TreeMap(Map)
+TreeMap(SortedMap)
+
+Methods unique to NavigableMap:
+
+Map.Entry ceilingEntry(K key) -- "least key greater than or equal to the given key, or null"
+K ceilingKey(K key)
+Map.Entry higherEntry(K key) -- just barely greater
+K higherKey(K key)
+Map.Entry firstEntry()
+Map.Entry lastEntry()
+Map.Entry pollFirstEntry() -- it removes the first entry
+Map.Entry pollLastEntry() -- it removes the last entry
+NavigableMap descendingMap()
+NavigableSet navigableKeySet()
+NavigableSet descendingKeySet()
+NavigableMap subMap(fromKey, fromInclusiveBoolean,
+					toKey, toInclusiveBoolean)
+NavigableMap headMap(toKey, inclusiveBoolean)
+NavigableMap tailMap(fromKey, inclusiveBoolean)
+SortedMap subMap(fromKey, toKey)
+SortedMap headMap(toKey)
+SortedMap tailMap(fromKey)
+
+The other NavigableMap: ConcurrentSkipListMap()
+
+

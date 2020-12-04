@@ -1,0 +1,59 @@
+java.util.stream.Stream
+
+Thoughts about ordering:
+source and intermediate operations => whether a stream has an encounter ordering
+
+Ordered sources:
+List
+arrays
+presumably TreeSet
+Stream.concat(aStream, anotherStream) *if* both source streams are ordered
+Stream.iterate(aSeed, aPredicateForHasNext, anNextUnaryOperator)
+Stream.of(T... values)
+
+
+Intermediate operations establishing an order:
+sorted()
+
+Unordered sources:
+HashSet
+Stream.generate(aSupplier)
+
+Intermediate operations relaxing order:
+unordered()
+
+Intermediate operations continuing order, if present:
+dropWhile(aPredicate)
+takeWhile(aPredicate)
+skip(aLong)
+limit(aLong)
+peek(aConsumer) just invokes the Consumer as items are encountered
+distinct()
+
+
+Terminal operations that are order-deterministic, if the incoming stream is ordered:
+Optional<T> findFirst()
+void forEachOrdered(aConsumer)
+<A> A[] toArray(IntFunction<A[]> generator)
+Object[] toArray[]
+
+Terminal operations that don't care about order:
+Optional<T> findAny()
+boolean noneMatch(Predicate)
+boolean allMatch(aPredicate)
+boolean anyMatch(aPredicate)
+long count()
+Optional<T> max(aComparator)
+Optional<T> min(aComparator)
+void forEach(aConsumer)
+
+
+Recipes for a concurrent reduction:
+stream is parallel,
+  terminal operation is collect(aCollector)
+    aCollector is concurrent
+	  either the stream is unordered, or
+	  the collector is unordered
+	  
+
+	  

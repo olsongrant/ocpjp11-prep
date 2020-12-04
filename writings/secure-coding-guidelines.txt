@@ -1,0 +1,97 @@
+Secure coding guidelines:
+
+0-0 Simple is safest
+0-1 Design to avoid problems
+0-2 Avoid duplication
+0-3 Restrict privileges
+0-4 Establish trust boundaries
+0-5 Minimize the number of permission checks
+0-6 Encapsulate
+0-7 Document security-related info
+0-8 Secure third-party code
+
+1-1 Denial of service -- disproportionately heavy resources
+  large image size vector graphics
+  integer overflow
+  stream - to - object graph
+  zip bombs
+  billion laughs attack -- XML entity expansion
+  overloading keys with the same hash code, slows things down
+  regular expressions -- catastrophic backtracking
+  XPath expressions
+  Java deserialization, JavaBeans XML deserialization
+  detailed logging of unusual behavior
+  infinite loops
+  processing jars from untrusted sources
+  
+1-2 Release resources
+1-3 avoid possibilities of silent overflow of primitive integral types
+1-4 Implement robust error/exception handling
+  
+2-1 Purge sensitive information from exceptions
+2-2 do not log highly sensitive info
+2-3 consider purging highly sensitive info from memory after use
+
+3-1 Generate valid formatting
+    don't combine correction and validation
+	reject invalid data and subsequent data without attempting correction
+	
+3-2 Avoid dynamic SQL
+3-3 XML and HTML generation requires care
+3-4 Avoid any untrusted data on the command line
+3-5 Restrict XML inclusion
+3-6 BMP image files may contain references to local International Color Consortium files, and code trying to read those referred-to files can be problematic
+3-7 Disable HTML display in Swing components
+3-8 Take care interpreting untrusted code
+3-9 consider blocking unexpected floating point numbers (NaN, Infinity)
+
+4-1 Limit accessibility of classes, interfaces, methods, and fields
+4-2 Limit the accessibility of packages
+4-3 Isolate unrelated code
+4-4 Limit exposure of ClassLoader instances
+4-5 Limit the extensibility of classes and methods
+4-6 Understand how a superclass can affect subclass behavior   
+
+5-1 Validate inputs
+5-2 Validate output from untrusted objects as input
+5-3 Define wrappers around native methods
+
+6-1 Prefer immutability for value types
+6-2 Create copies of mutable output values
+6-3 Create safe copies of mutable and subclassable input values
+6-4 Support copy functionality for a mutable class (copy constructor)
+6-5 Don't trust identity equality when overridable on input reference objects
+6-6 Clone/copy mutable objects that you're passing to untrusted code
+6-7 treat output from untrusted object with copying/validation
+6-8 Define wrapper methods around modifiable internal state
+6-9 Make public static fields final
+6-10 Ensure public static final fields are constants (unmodifiable lists, for example)
+6-11 Don't expose mutable statics
+6-12 Don't expose modifiable collections
+7-1 Avoid exposing constructors of sensitive classes.
+7-2 Prevent the unauthorized construction of sensitive classes
+7-3 Prevent sensitive classes from being used prior to their construction becoming complete
+7-4 Prevent constructors from calling methods that can be overridden
+7-5 Defend against cloning of non-final classes
+   pointer-to-implementation is a good defense
+8-1 Avoid serialization for security-sensitive classes
+8-2 Guard sensitive data during serialization
+   transient
+   serialPersistentfields
+   writeObject  with ObjectOutputStream.putField
+   writeReplace
+   Externalizable
+8-3 Treat deserialization as a construction activity, cloning and validating input, and using an initialized flag to prevent the object from being used until deserialization successfully completes
+8-4 Duplicate the securityManager checks enforced in a class during serialization and deserialization 
+8-5 Understand the security permissions given to serialization and deserialization
+8-6 Filter untrusted serial data -- there's a new feature called Serialization Filtering
+9-1 Understand how permissions are checked
+    (libraries typically are fully privileged)
+9-2 Beware of callback methods -- they can be maniplated to get around permissions checks
+9-3 Safely invoke java.security.AccessController.doPrivileged
+   * don't let the caller provide the input or the action, if you can help it -- if it's necessary, then validate the inputs
+   * don't let the returned object expose sensitive info
+   * if you're passing in a previously acquired context, make sure it's not null
+   
+
+

@@ -1,0 +1,24 @@
+Queues and Deques
+
+Deque:
+
+add(E e) -- tail
+addAll(Collection) -- tail 
+addFirst(E e) -- front
+addLast(E e) -- tail
+getFirst() -- front
+getLast() -- tail
+offer(E e)  -- tail
+offerFirst(E e) -- front
+offerLast(E e) -- tail
+iterator() -- head/first to tail/last
+pop() -- head/front/first
+push(E e) -- head/front/first
+remove() -- head/front/first
+remove(Object o) -- first/head/front/first
+peek() -- head/first
+poll() -- first/head/front/first
+
+Queue:
+all adds are to the tail
+removes are from the head

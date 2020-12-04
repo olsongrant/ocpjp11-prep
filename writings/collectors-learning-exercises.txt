@@ -1,0 +1,26 @@
+Collectors learning exercises
+
+Given an encapsulated Book class with a title, author, and a price, and a list of Book objects, use a stream to calculate the average price of the books in the List.
+
+Double avgPrice = bookList.stream().collect(Collectors.averagingDouble(b->b.getPrice()));
+
+Now calculate the average length of the titles of the books in the list.
+
+Double avgLength = bookList.stream().collect(Collectors.averagingInt(b->b.getTitle().length()));
+
+There's also averagingLong
+
+A use of collectingAndThen:
+Integer numberOver10Bucks = Book.sampleBookList().stream().collect(
+				Collectors.collectingAndThen(
+				Collectors.filtering(
+						b->b.getPrice()>10.0, 
+						Collectors.toList()), 
+						aList->aList.size()));
+						
+
+
+summarizingDouble with the list of books:
+DoubleSummaryStatistics stats = Book.sampleBookList().stream()
+				.collect(Collectors.summarizingDouble(b->b.getPrice()));
+		System.out.println(stats);

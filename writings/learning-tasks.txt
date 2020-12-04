@@ -1,0 +1,7 @@
+Learn all the functional interfaces, both for generic object types and primitive types
+Memorize all the ExecutorService methods, down to the parameter lists.
+Learn which Stream methods produce consistent results on an ordered stream, whether it's a parallel or serial stream
+Master the concept of a concurrent reduction, and memorize the methods for concurrent reductions.
+Familiarize with the rules for Paths APIs
+Write out and memorize the rules around inner classes
+Practice/memorize which Collection types can accept the addition of nulls

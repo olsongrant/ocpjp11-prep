@@ -1,0 +1,155 @@
+java.nio.file.Files
+
+static long copy(InputStream, Path, CopyOptions...) throws IOException
+ - if target is a symbolic link and REPLACE_EXISTING is not specified, then the copy fails -- I presume IOException
+ - if the target file already exists and REPLACE_EXISTING is not specified, then the copy fails -- I presume IOException
+ - if REPLACE_EXISTING is specified and the target file is a non-empty directory, the copy fails
+ - the returned value is the number of bytes read or written
+ 
+static long copy(Path, OutputStream) throws IOException
+ - not many memory challenges, here
+ - can't assume that flush() is not needed after this method returns
+ 
+static byte[] readAllBytes(Path) throws IOException
+
+static String readString(Path) throws IOException
+ - same as readString(path, StandardCharsets.UTF_8)
+ 
+static String readString(Path, Charset) throws IOException
+
+static List<String> readAllLines(Path, Charset) throws IOException
+
+static List<String> readAllLines(Path) throws IOException
+
+static Path write(Path, byte[], OpenOption...) throws IOException
+ - by default, it forces a new file written freshly
+  - dpending on options, can add on to the file
+
+static Path write(Path, Iterable<? extends CharSequence>, Charset, OpenOption...) throws IOException
+
+static Path write(Path, Iterable<? extends CharSequence>,  OpenOption...) throws IOException
+
+static Path writeString(Path, CharSequence, OpenOption...) throws IOException
+
+static Path writeString(Path, CharSequence, Charset, OpenOption...) throws IOException
+
+static Stream<Path> list(Path dir) throws IOException
+ - must close the Stream in order to close the open directory
+ - putting it into a try-with-resources clause is recommended
+ 
+static Stream<Path> walk(Path, int, FileVisitOption...) throws IOException
+
+static Stream<Path> walk(Path, FileVisitOption...) throws IOException
+
+static Stream<Path> find(Path, int, BiPredicate<Path, BasicFileAttributes> FileVisitOption...) throws IOException
+
+static Stream<String> lines(Path, Charset) throws IOException
+ - lazy population of the stream
+ 
+static Stream<String> lines(Path) throws IOException
+ - uses UTF-8 as the charset
+ 
+static BufferedReader newBufferedReader(Path) throws IOException
+
+static Path createDirectories(Path, FileAttribute<?>...) throws IOException
+
+static Path createDirectory(Path, FileAttribute<?>...) throws IOException
+
+static Path createFile(Path, FileAttribute<?>...) throws IOException
+
+static Path createLink(Path, Path) throws IOException
+
+static Path createSymbolicLink(Path, Path, FileAttribute<?>...)
+throws IOException
+  
+static Path createTempDirectory(String prefix, FileAttribute<?>...) throws IOException
+
+static Path createTempDirectory(Path dir, String prefix, FileAttribute<?>...) throws IOException
+
+static Path createTempFile(String prefix, String suffix, FileAttribute<?>...) throws IOException
+
+static Path createTempFile(Path dir, String prefix, String suffix, FileAttribute<?>...) throws IOException
+ 
+ 
+CRUD breakdown of the Files operations:
+Read:
+within a directory:
+  walk
+  find
+  list
+  find(Path, int, BiPredicate<Path, BasicFileAttributes>, FileVisitOption...)
+  DirectoryStream<Path> newDirectoryStream(Path)
+  DirectoryStream<Path> newDirectoryStream(Path, String)
+  DirectoryStream<Path> newDirectoryStream(Path, DirectoryStream.Filter<? super Path>)
+
+single file reading:
+  lines
+  readAllBytes
+  readAllLines
+  readString
+  newBufferedReader(Path)
+  newBufferedReader(Path, Charset)
+  newInputStream(Path, OpenOption...)
+  
+
+  
+  
+reading of metadata/attributes:
+  isDirectory
+  getPosixFilePermissions(Path, LinkOption...)
+  isExecutable(Path)
+  isHidden(Path)
+  isReadable(Path)
+  isRegularFile(Path, LinkOption...)
+  isSameFile(Path, Path)
+  isSymbolicLink(Path)
+  isWritable(Path)
+  exists(Path, LinkOption...)
+  getAttribute(Path, String attribute, LinkOption...)
+  getFileStore(Path)
+  getLastModifiedTime(Path, LinkOption...)
+  getOwner(Path, LinkOption...)
+  notExists(Path, LinkOption...)
+  String probeContentType(Path)
+  <A extends BasicFileAttributes> A readAttributes(Path, Class<A>, LinkOption...)
+  Map<String, Object> readAttributes(Path, String, LinkOption...)
+  readSymbolicLink(Path link)
+  long size(Path)
+  
+  
+  
+update by copying/moving
+  move(Path, Path, CopyOption...)
+    
+update file attributes
+  getFileAttributeView(Path, Class<V>, LinkOption...)
+  setAttribute(Path, String attribute, Object value, LinkOption...)
+  setLastModifiedTime(Path, FileTime)
+  setOwner(Path, UserPrincipal)
+  setPosixFilePermissions(Path, Set<PosixFilePermission>)
+  
+  
+update by writing content:
+  newBufferedWriter(Path, Charset, OpenOption...)
+  newBufferedWriter(Path, OpenOption...)
+  static SeekableByteChannel newByteChannel(Path, OpenOption...) throws IOException
+  static SeekableByteChannel newByteChannel(Path, Set<? extends OpenOption>, FileAttribute<?>...) throws IOException
+  OutputStream newOutputStream(Path, OpenOption...)
+  
+
+create
+  createDirectories(Path, FileAttribute<?>...)
+  createDirectory(Path, FileAttribute<?>...)
+  createFile(Path, FileAttribute<?>...)
+  createLink(Path, Path)  
+  createSymbolicLink(Path, Path, FileAttribute<?>...)
+  createTempDirectory(String prefix, FileAttribute<?>...)
+  createTempDirectory(Path dir, String prefix, FileAttribute<?>...)
+  createTempFile(String prefix, String suffix, FileAttribute<?>...)
+  createTempFile(Path dir, String prefix, String suffix, FileAttribute<?>...)
+  
+delete
+  void delete(Path)
+  boolean deleteIfExists(Path)
+  
+    

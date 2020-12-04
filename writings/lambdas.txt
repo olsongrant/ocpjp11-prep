@@ -1,0 +1,23 @@
+Lambdas
+
+Rules regarding the writing of lambdas:
+1. can omit the data type of the parameters
+2. if only one parameter, can omit the parentheses
+3. must have the arrow token, ->
+4. For the body, 
+   * if you use a return, then you must use braces and a semicolon (must use a proper block)
+   * if you specify a single expression, the return is implied
+   * you don't have to enclose a void method invocation in braces
+   local variables referenced from a lambda expression must be final or effectively final
+   
+Use of lambdas:
+Can only use lambda expressions in situations in which the Java compiler can determine a target type:
+  * variable declarations
+  * assignments
+  * return statements
+  * array initializers
+  * method or constructor arguments
+  * lambda expression bodies
+  * conditional expressions, ternary operators
+  * cast expressions
+  

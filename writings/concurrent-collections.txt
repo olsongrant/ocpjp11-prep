@@ -1,0 +1,26 @@
+Concurrent Collections
+
+package java.util.concurrent
+
+ConcurrentHashMap
+ConcurrentLinkedDeque
+ConcurrentLinkedQueue
+ConcurrentSkipListMap
+ConcurrentSkipListSet
+CopyOnWriteArrayList
+CopyOnWriteArraySet
+LinkedBlockingDeque
+LinkedBlockingQueue
+
+methods to get a synchronized collection (on a java.util.Collection subtype):
+public static <T> List<T> synchronizedList(List<T> list)
+                  Collection<T> synchronizedCollection(Collection<T>)
+				  Set<T> synchronizedSet(Set<T>)
+				  SortedSet<T> synchronizedSortedSet(SortedSet<T>)
+				  NavigableSet<T> synchronizedNavigableSet(NavigableSet<T>)
+		<K, V> Map<K, V> synchronizedMap(Map<K,V> m)
+		<K, V> SortedMap<K,V> synchronizedSortedMap(SortedMap<K,V>)
+		<K, V> NavigableMap<K,V> synchronizedNavigableMap(NavigableMap<K,V>)
+		
+The Collections class also has static methods for synchronizedMap, synchronizedSortedMap, etc.
+

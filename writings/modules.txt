@@ -1,0 +1,45 @@
+Modules
+
+ModuleStatement: 
+  requires {RequiresModifier} ModuleName;
+  exports PackageName [to ModuleName {, ModuleName}];
+  opens PackageName [to ModuleName {, ModuleName}];
+  uses TypeName;
+  provides TypeName with TypeName {, TypeName} ;
+  
+RequiresModifier could be transitive or static
+transitive means that anybody requiring thisModule also requires the other module
+static means that the dependency applies to compilation, but not to execution
+
+each required module must have its own "requires" line -- no comma-spliced lists.
+
+opens 
+  means it opens the package to reflection
+  
+{Annotation} [open] module ModuleName {
+  {ModuleStatement}
+} 
+
+Only one module per JAR file.
+
+java --list-modules
+
+A service is just an interface or abstract class that can be consumed by other classes.
+
+--module-path
+--add-reads
+--add-exports
+--add-opens
+--add-modules
+--list-modules
+--patch-module
+--illegal-access=permit|warn|deny
+
+jdeps [options] path
+path can be a jar file path
+or a .class file path
+or a directory
+or a fully qualified class name
+
+jdeps options
+-s or -summary

@@ -1,0 +1,35 @@
+jmod
+
+jmod (create|extract|list|describe|hash) [options] jmod-file
+
+create -- creates a new JMOD archive file
+
+extract -- extracts all the files from the JMOD archive file
+
+list -- prints the names of all the entries
+
+describe -- prints the module details
+
+hash -- determines leaf modules and records the hashes of the dependencies that directly and indirectly require them
+
+You can specify some options for jmod:
+
+--class-path <path>
+
+--cmds <path>
+
+--config <path>
+
+--dir <path>
+
+--dry-run
+
+--exclude <pattern-list>
+
+#Wed Dec 07 00:40:19 EST 2016
+create --class-path mods/com.greetings --module-path mlib
+  --cmds commands --config configfiles --header-files src/h
+  --libs lib --main-class com.greetings.Main
+  --man-pages man --module-version 1.0
+  --os-arch "x86_x64" --os-name "Mac OS X"
+  --os-version "10.10.5" greetingsmod

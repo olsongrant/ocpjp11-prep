@@ -1,0 +1,167 @@
+Functional Interfaces
+package: java.util.function
+
+Predicate<T>
+  <T> Boolean test(T t)
+  
+BiPredicate<T>
+  <T, U> Boolean test(T t, U u)
+
+IntPredicate
+  Boolean test(int x)
+
+Other primitive predicate specializations
+LongPredicate, DoublePredicate
+  
+What are the default methods on the Predicate interface(s)?
+and(anotherPredicate)
+negate()
+or(anotherPredicate) -- short-circuits
+
+--------------------------------------------------
+
+Consumer
+  <T> void accept(T t)
+  
+default methods on Consumer:
+andThen(anotherConsumer)
+
+BiConsumer
+  <T, U> void accept(T t, U u)
+  
+Primitive versions of Consumer:
+IntConsumer
+  void accept(int i)
+  
+LongConsumer
+  void accept(long j)
+  
+DoubleConsumer  
+  void accept(double d)
+  
+ObjDoubleConsumer<T>
+  void accept(T t, double d)
+  
+ObjIntConsumer<T>
+  void accept(T t, int i)
+  
+ObjLongConsumer<T>
+  void accept(T t, long l)
+  
+------------------------------------------  
+Function<T, R>
+  <T, R> R apply(T t)
+
+BiFunction<T, U, R>
+  <T, U, R> R apply (T t, U u)
+  
+default methods on Function:
+  andThen(anAfterFunction)
+  compose(aBeforeFunction)
+  identity() -- the identity function returns theinput argument
+  
+Primitive versions of Function and BiFunction:
+  DoubleFunction<R>
+    <R> R apply(double d)
+  DoubleToIntFunction
+    int applyAsInt(double d)
+	
+  DoubleToLongFunction
+    long applyAsLong(double d)
+	
+  IntFunction<R>
+    <R> R apply(int i)
+    
+  IntToDoubleFunction
+    double applyAsDouble(int i)
+	
+  IntToLongFunction
+    long applyAsLong(int i)
+	
+  LongFunction<R>
+    <R> R apply(long l)
+    
+  LongToDoubleFunction
+    double applyAsDouble(long l)
+	
+  LongToIntFunction
+    int applyAsInt(long l)
+	
+  ToDoubleBiFunction<T, U>
+    double applyAsDouble(T t, U u)
+	
+  ToDoubleFunction<T>
+    double applyAsDouble(T t)
+	
+  ToIntBiFunction<T, U>
+    int applyAsInt(T t, U u)
+	
+  ToIntFunction<T>
+    int applyAsInt(T t)
+  
+  ToLongBiFunction<T, U>
+    long applyAsLong(T t, U u)
+	
+  ToLongFunction<T>
+    long applyAsLong(T t)
+-------------------------------------------------  
+  
+UnaryOperator<T>
+  <T> T apply(T t)
+  
+BinaryOperator<T>
+  <T> T apply(T t, T anotherT)
+  
+Which other functional interface does Operator extend?
+UnaryOperator extends Function<T, T>
+therefore it has andThen, apply, and compose, as well
+
+BinaryOperator extends BiFunction<T, T, T>
+It has andThen and apply from BiFunction
+BinaryOperator has some special static methods:
+static <T> BinaryOperator<T> maxBy(aComparator)
+static <T> BinaryOperator<T> minBy(aComparator)
+
+Are there primitive specializations of Operator?
+Yes
+DoubleBinaryOperator
+  double applyAsDouble(double d1, double d2)
+  
+DoubleUnaryOperator
+  double applyAsDouble(double d)
+  
+IntBinaryOperator
+  int applyAsInt(int i, int j)
+  
+IntUnaryOperator
+  int applyAsInt(int i)
+  
+LongBinaryOperator
+  long applyAsLong(long k, long m)
+  
+LongUnaryOperator
+  long applyAsLong(long l)
+
+  
+-------------------------------------------------  
+  
+Supplier<T>
+  <T> T get()
+  
+BiSupplier?  -- doesn't make sense
+
+Primitive specializations of Supplier:
+  BooleanSupplier
+    boolean getAsBoolean()
+  IntSupplier
+    int getAsInt()
+  DoubleSupplier
+    double getAsDouble()
+  LongSupplier
+    long getAsLong()
+
+Comparator is in java.util, and I will write about it separately:
+Comparator<T>
+   <T> int compare(T o1, T o2)
+   
+   

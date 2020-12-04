@@ -1,0 +1,80 @@
+java.nio.file.Path
+and java.nio.file.Paths
+
+creating a Path
+  Path resolve(Path)
+  Path resolve(String)
+  Path.of(String, String...)
+  Path.of(URI)
+  resolveSibling(String)
+  resolveSibling(Path)
+  toAbsolutePath()
+  toRealPath(LinkOption...) throws IOException
+  Paths.get(String, String...)
+  Paths.get(URI)
+
+reading / interrogating a Path
+  int compareTo(Path)
+  boolean endsWith(String)
+  boolean endsWith(Path)
+  Path getFileName()
+  FileSystem getFileSystem()
+  Path getName(int index)
+  boolean isAbsolute()
+  Path getRoot()
+  Path getFileName()
+  Path getParent()
+  int getNameCount()
+  Path subpath(int beginIndex, int endIndex)
+  boolean startsWith(Path)
+  boolean startsWith(String)
+  Path normalize()
+  Iterator<Path> iterator()
+
+
+updating a Path
+
+deleting a Path
+
+transforming a Path to another type
+  File toFile()
+  String toString()
+  URI toUri()
+
+
+Things to remember about resolve(Path other):
+  resolve assumes its Path represents a directory
+  if (other.isAbsolute()) {
+    return other;
+  }
+  if (other.getNameCount() == 1) {
+    if (other.getName(0).isEmpty()) {
+	  // other is considered empty
+	  return this;
+	}
+  }
+  if (other.getRoot() != null) {
+    // add the other's path components to the end of
+	// this one, and return it
+  } else {
+    return something platform-specific;
+  }
+  
+Things to remember about relativize:
+  * relativize assumes its Path represents a directory
+  * the actual current working directory has no impact or relevance
+  if (both paths have a root component) {
+    the ability to create a relative path is implementation dependent, but if the roots are the same, it generally works
+  }
+  if (neither path has a root component) {
+    the relativized path can be calculated, unless there are too many references to parent directories for the calculation to be sensible
+  }
+  if (one path has a root component, and the other does not) {
+    then an IllegalArgumentException is thrown
+  }
+  
+  
+
+
+  
+  

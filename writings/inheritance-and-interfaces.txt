@@ -1,0 +1,28 @@
+Inheritance and Interfaces
+
+Java has
+ no multiple inheritance of state
+ some multiple inheritance of implementation, via interface default methods
+ a healthy amount of multiple inheritance of type, via the ability to implement multiple interfaces in the same type
+ 
+An overriding method can return a subtype of the type returned by the overridden method (covariant return type)
+
+instance methods can be overridden
+static methods can only be hidden
+
+In the case of a name conflict among multi-inherited methods,
+ instance methods (defined in classes) are preferred over interface default methods
+ methods already overridden by other candidates are ignored
+ a class implementing two interfaces with the same method signature must provide its own implementation of the method
+ 
+Static methods in interfaces are never inherited 
+
+A subclass and a superclass both implementing a method signature only compiles if the static / non-static designation is consistent. If there is one static, and the other non-static, the compiler will complain.
+
+Subclass instance fields hide fields of the same name in superclasses.
+
+While Object has a clone() method, the Object implementation of clone() checks whether the object on which clone() was invoked implements the Cloneable interface. If not, CloneNotSupportedException.
+
+An abstract class may have static fields and static methods.
+
+

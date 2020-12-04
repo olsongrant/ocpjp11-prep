@@ -1,0 +1,48 @@
+jdeps
+
+jdeps [options] path ...
+
+path can be a .class file, directory, or JAR file to analyze
+
+Common Options
+-s or -summary
+-v or -verbose  // class-level
+
+-verbose:class -filter:none
+
+-apionly or --api-only
+-jdkinternals or --jdk-internals
+
+-cp <a path>
+or -classpath
+or --class-path
+
+--module-path <a module path>
+
+$ jdeps --inverse --require java.xml.bind  
+Inverse transitive dependences on [java.xml.bind] 
+java.xml.bind <- java.se.ee 
+java.xml.bind <- jdk.xml.ws 
+java.xml.bind <- java.xml.ws <- java.se.ee 
+java.xml.bind <- java.xml.ws <- jdk.xml.ws 
+java.xml.bind <- jdk.xml.bind <- jdk.xml.ws  
+
+C:\Java\jdk1.9.0>jdeps demo\jfc\Notepad\Notepad.jar
+Notepad.jar -> java.base
+Notepad.jar -> java.desktop
+Notepad.jar -> java.logging
+   <unnamed> (Notepad.jar)
+      -> java.awt
+      -> java.awt.event
+      -> java.beans
+      -> java.io
+      -> java.lang
+      -> java.net
+      -> java.util
+      -> java.util.logging
+      -> javax.swing
+      -> javax.swing.border
+      -> javax.swing.event
+      -> javax.swing.text
+      -> javax.swing.tree
+      -> javax.swing.undo
